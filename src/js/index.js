@@ -5,8 +5,6 @@ const botaoDeBusca = document.querySelector(".btn-busca");
 botaoDeBusca.addEventListener("click", async () => {
     const cidade = document.getElementById("input-busca").value;
 
-    if(!cidade) return;
-
     const dados = await buscarDadosDaCidade(cidade);
 
     if (dados) preencherDadoNaTela (dados, cidade);
@@ -17,8 +15,6 @@ async function buscarDadosDaCidade(cidade) {
     const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${chaveDaApi}&q=${cidade}&aqi=no&lang=pt` ;
 
     const response = await fetch(apiUrl);
-
-    if(resposta.status !== 200) return;
 
     const dados = response.json();
 
